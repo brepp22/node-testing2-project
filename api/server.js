@@ -12,24 +12,24 @@ server.get('/' , async (req, res) => {
 server.get("/friends", (req, res) => {
     Friends.getAll()
       .then(friends => {
-        res.status(200).json(friends);
+        res.status(200).json(friends)
       })
       .catch(error => {
-        res.status(500).json(error);
+        res.status(500).json(error)
       })
   })
 
   server.get("/friends/:id", async (req, res) => {
-    const friend = await Friends.getById(req.params.id);
+    const friend = await Friends.getById(req.params.id)
     if (!friend) {
-      res.json({status: 404 , message: 'friend not found'})
+      res.status(404).json({message: 'friend not found'})
     } else {
       res.json(friend)
     }
   });
   
   server.post("/friends", async (req, res) => {
-    const newFriend = await Friends.insert(req.body);
+    const newFriend = await Friends.insert(req.body)
     res.json(newFriend)
   })
   
