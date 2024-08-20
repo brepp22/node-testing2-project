@@ -16,9 +16,9 @@ server.get("/friends", (req, res) => {
       })
       .catch(error => {
         res.status(500).json(error);
-      });
-  });
-  
+      })
+  })
+
   server.get("/friends/:id", async (req, res) => {
     const friend = await Friends.getById(req.params.id);
     if (!friend) {
@@ -30,15 +30,8 @@ server.get("/friends", (req, res) => {
   
   server.post("/friends", async (req, res) => {
     const newFriend = await Friends.insert(req.body);
-    res.json(newFriend);
-  });
+    res.json(newFriend)
+  })
   
-//   server.delete("/friends/:id", (req, res) => {
-//     res.end();
-//   });
-  
-//   server.put("/friends/:id", (req, res) => {
-//     res.end();
-//   });
 
 module.exports = server 

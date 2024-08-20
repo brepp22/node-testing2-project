@@ -5,15 +5,6 @@ async function insert(friend) {
     return db('friends').where({ id }).first()
   }
   
-  async function update(friend_id, changes) {
-    await db('friends').where({ friend_id }).update(changes)
-    return db('friends').where({ friend_id }).first()
-  }
-  
-  function remove(id) {
-    return db('friends').where({ id }).delete()
-  }
-  
   function getAll() {
     return db('friends')
   }
@@ -26,8 +17,6 @@ async function insert(friend) {
 
 module.exports = {
     insert,
-    update,
-    remove,
     getAll,
     getById,
 }
